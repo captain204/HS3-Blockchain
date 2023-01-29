@@ -66,7 +66,7 @@ class Pubsub():
 def main():
     pubsub = Pubsub()
     time.sleep(1)
-    pubsub.publish(CHANNELS['TEST'], {'foo':'bar'})
+    pubsub.publish(CHANNELS['TEST'], {'New':'Block'})
     
 
 if __name__  == '__main__':
