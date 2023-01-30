@@ -6,6 +6,7 @@ from pubnub.callbacks import SubscribeCallback
 from decouple import config
 
 from backend.blockchain.block import Block
+from backend.blockchain.blockchain import Blockchain
 
 pnconfig = PNConfiguration()
 
@@ -65,7 +66,9 @@ class Pubsub():
         self.publish(CHANNELS['BLOCK'], block.to_json())
 
 def main():
-    pubsub = Pubsub()
+    blockchain = Blockchain()
+
+    pubsub = Pubsub(blockchain)
     
     time.sleep(1)
 
