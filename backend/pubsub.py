@@ -3,13 +3,14 @@ import time
 from pubnub.pubnub import PubNub
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.callbacks import SubscribeCallback
+from decouple import config
 
 from backend.blockchain.block import Block
 
 pnconfig = PNConfiguration()
 
-pnconfig.subscribe_key = 'sub-c-94929cb1-247a-4337-a58d-be5eb576a84e'
-pnconfig.publish_key ='pub-c-0083bed6-c7f6-4052-bb52-920a7db44710'
+pnconfig.subscribe_key = config('SUBSCRIBE')
+pnconfig.publish_key = config('PUBLISH')
 
 
 
@@ -65,7 +66,9 @@ class Pubsub():
 
 def main():
     pubsub = Pubsub()
+    
     time.sleep(1)
+
     pubsub.publish(CHANNELS['TEST'], {'New':'Block'})
     
 
