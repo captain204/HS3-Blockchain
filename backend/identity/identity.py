@@ -10,9 +10,9 @@ from cryptography.hazmat.primitives.asymmetric.utils import (
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.exceptions import InvalidSignature
 
-class Account:
+class Identity:
     """
-    An individual account for a blockchain participant.
+    An individual Identity for a blockchain participant.
     Allows a participant to authorize transactions.
     """
     def __init__(self, blockchain=None):
@@ -68,8 +68,8 @@ class Account:
 
    
 def main():
-    account = Account()
-    print(f'account.__dict__: {account.__dict__}')
+    identity = Identity()
+    print(f'identity.__dict__: {identity.__dict__}')
 
     data = { 'Hosptal': 'New crescent',
             'Patient':'John Emmanuel',
@@ -78,13 +78,13 @@ def main():
             'Description':'Patients is struggling from sever malaria',
             'Medication':'Arthemeter'
      }
-    signature = account.sign(data)
+    signature = identity.sign(data)
     print(f'signature: {signature}')
 
-    should_be_valid = account.verify(account.public_key, data, signature)
+    should_be_valid = identity.verify(identity.public_key, data, signature)
     print(f'should_be_valid: {should_be_valid}')
 
-    should_be_invalid = Account.verify(Account().public_key, data, signature)
+    should_be_invalid = Identity.verify(Identity().public_key, data, signature)
     print(f'should_be_invalid: {should_be_invalid}')
 
 if __name__ == '__main__':
