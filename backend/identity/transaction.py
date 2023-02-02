@@ -4,6 +4,11 @@ import uuid
 from backend.identity.identity import Identity
 
 
+#TODO
+#Write Valid transaction method
+#Write test for valid transactions method
+
+
 class Transaction:
     """
     Document of writing a transaction to the blockchain

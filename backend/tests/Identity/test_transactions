@@ -1,0 +1,29 @@
+import pytest
+
+from backend.identity.transaction import Transaction
+from backend.identity.identity import Identity
+
+
+def test_transaction():
+    sender_identity = Identity()
+    data = {
+                'Hosptal': 'New crescent',
+                'Patient':'John Emmanuel',
+                'Physician':'Dr Oluwafemi',
+                'Diagnosis':'Malaria',
+                'Description':'Patients is struggling from severe malaria',
+                'Medication':'Arthemeter'
+            }
+    transaction = Transaction(sender_identity, data)
+
+    
+    assert 'timestamp' in transaction.input
+    assert transaction.input['data'] == data
+    assert transaction.input['address'] == sender_identity.address
+    assert transaction.input['public_key'] == sender_identity.public_key
+    assert Identity.verify(
+        transaction.input['public_key'],
+        transaction.data,
+        transaction.input['signature']
+    )
+
