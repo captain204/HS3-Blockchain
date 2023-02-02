@@ -71,13 +71,7 @@ def main():
     identity = Identity()
     print(f'identity.__dict__: {identity.__dict__}')
 
-    data = { 'Hosptal': 'New crescent',
-            'Patient':'John Emmanuel',
-            'Physician':'Dr Oluwafemi',
-            'Diagnosis':'Malaria',
-            'Description':'Patients is struggling from sever malaria',
-            'Medication':'Arthemeter'
-     }
+    data = { 'data': 'testing signature'}
     signature = identity.sign(data)
     print(f'signature: {signature}')
 
