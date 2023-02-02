@@ -1,5 +1,5 @@
 from backend.blockchain.block import Block
-
+from backend.identity.transaction import Transaction
 
 
 class Blockchain:
@@ -57,13 +57,13 @@ class Blockchain:
             last_block = chain[i-1]
             Block.is_valid_block(last_block,block)
 
-
+    
 
 
 def main():
     blockchain = Blockchain()
     blockchain.add_block('one')
-    blockchain.add_block({'facility':'Rayfield Medical','diagnosis':'Maleria'})
+    blockchain.add_block([{'facility':'Rayfield Medical','diagnosis':'Maleria'},{'facility':'Rayfield Medical','diagnosis':'Maleria'}])
     blockchain.add_block(['patient one',12039])
 
     print(blockchain)
